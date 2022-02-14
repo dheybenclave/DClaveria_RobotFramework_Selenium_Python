@@ -2,6 +2,12 @@
 Documentation       Register and Login new Customer
 Resource             ../Resources/CommonGlobal.robot
 
+*** Variables ***
+
+&{test_data}=   gender=Female   first_name=robot_framework  last_name=selenium  birthdate=12/30/2001    get_news=Yes    email=${GET_GENERATED_RANDOM_EMAIL}    password=test_python
+
+
+
 
 *** Test Cases ***
 Register and Login New Customer
@@ -9,11 +15,11 @@ Register and Login New Customer
     [Tags]  Smoke
     Proceed To Browser
     Navigate To Register Page
-    Generate Randomize Email   robot.framework.selenium
-    Register Customer   Female  robot_framework   selenium   12/31/2001    Yes  ${GET_GENERATED_RANDOM_EMAIL}  test_python
+    ${test_data.email}=    Generate Randomize Email   robot.framework.selenium  #assign new key value of  email key
+    Register Customer   ${test_data.gender}  ${test_data.first_name}    ${test_data.last_name}   ${test_data.birthdate}   ${test_data.get_news}  ${test_data.email}  ${test_data.password}
     LogOut User
     Navigate To Login Page
-    Login with Credentials   ${GET_GENERATED_RANDOM_EMAIL}    test_python
+    Login with Credentials   ${GET_GENERATED_RANDOM_EMAIL}   ${test_data.password}
     Open new Browser Tab and Close  ${NEW_BROWSER_TAB}
     [Teardown]  Close Browser
 
@@ -71,7 +77,7 @@ Register Customer
 
     ${selected_gender}=  convert to lower case  ${gender}
     run keyword if  "${selected_gender}" == "male"   OR   "${selected_gender}" == "female"
-s
+
     ${selector_gender}=  set variable   //div[@id="gender"]//input[@id="gender-${selected_gender}"]   #default selected
     click element   xpath:${selector_gender}
 

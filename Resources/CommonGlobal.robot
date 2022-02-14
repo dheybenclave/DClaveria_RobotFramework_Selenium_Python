@@ -6,13 +6,16 @@ Library             String
 #Libraries | Keyword Command
 Library             ../lib/CustomLibrary.py
 Library             ../lib/common/CommonGlobal.py
+Library           Collections
 
 #Page Selectors
 Resource            ../Resources/PageElementSelectors/Common_MainScreen.robot
 Resource            ../Resources/PageElementSelectors/LoginPage/LoginPage_MainScreen.robot
 Resource            ../Resources/PageElementSelectors/RegisterPage/RegisterPage_MainScreen.robot
 
-
+Resource          keywords.robot
+#Suite Setup       Log    Suite Setup!
+#Suite Teardown    Log    Suite Teardown!
 
 *** Variables ***
 ${WELCOME_URL}      https://demo.nopcommerce.com/
@@ -32,6 +35,7 @@ Generate Randomize Email
     ${GENERATE_RANDOM_EMAILS} =  generate random emails     ${append_email}
     set test variable    ${GET_GENERATED_RANDOM_EMAIL}   ${GENERATE_RANDOM_EMAILS}
     my logger     ${GET_GENERATED_RANDOM_EMAIL}
+    [Return]    ${GENERATE_RANDOM_EMAILS}
 
 
 
