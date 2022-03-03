@@ -1,0 +1,1034 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.3 (Python 3.9.10 on win32)" generated="20220303 11:16:47.890" rpa="false" schemaversion="2">
+<suite id="s1" name="LoginandRegister" source="Z:\Automation\Python\RobotSelenium\TestSuite\Demo_NopCommerce\Regression\LoginandRegister.robot">
+<test id="s1-t1" name="Register and Login New Customer">
+<kw name="Generate Randomize Email" library="CommonGlobal">
+<var>${test_data.email}</var>
+<arg>robot.framework.selenium</arg>
+<kw name="Generate Random Emails" library="CustomLibrary">
+<var>${GENERATE_RANDOM_EMAILS}</var>
+<arg>${append_email}</arg>
+<msg timestamp="20220303 11:16:49.007" level="INFO">${GENERATE_RANDOM_EMAILS} = yr_robot.framework.selenium@mailinator.com</msg>
+<status status="PASS" starttime="20220303 11:16:49.007" endtime="20220303 11:16:49.007"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${GET_GENERATED_RANDOM_EMAIL}</arg>
+<arg>${GENERATE_RANDOM_EMAILS}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220303 11:16:49.008" level="INFO">${GET_GENERATED_RANDOM_EMAIL} = yr_robot.framework.selenium@mailinator.com</msg>
+<status status="PASS" starttime="20220303 11:16:49.008" endtime="20220303 11:16:49.008"/>
+</kw>
+<kw name="My Logger" library="CommonGlobal">
+<arg>${GET_GENERATED_RANDOM_EMAIL}</arg>
+<status status="PASS" starttime="20220303 11:16:49.008" endtime="20220303 11:16:49.008"/>
+</kw>
+<msg timestamp="20220303 11:16:49.009" level="INFO">${test_data.email} = yr_robot.framework.selenium@mailinator.com</msg>
+<status status="PASS" starttime="20220303 11:16:49.007" endtime="20220303 11:16:49.009"/>
+</kw>
+<kw name="Proceed To Browser" library="CommonGlobal">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${app_url}</arg>
+<arg>${app_browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220303 11:16:49.010" level="INFO">Opening browser 'chrome' to base url 'https://demo.nopcommerce.com/'.</msg>
+<status status="PASS" starttime="20220303 11:16:49.009" endtime="20220303 11:16:51.768"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220303 11:16:51.768" endtime="20220303 11:16:51.887"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${app_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20220303 11:16:51.893" level="INFO">Current location is 'https://demo.nopcommerce.com/'.</msg>
+<status status="PASS" starttime="20220303 11:16:51.887" endtime="20220303 11:16:51.893"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:16:53.906" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20220303 11:16:51.893" endtime="20220303 11:16:53.906"/>
+</kw>
+<status status="PASS" starttime="20220303 11:16:49.009" endtime="20220303 11:16:53.906"/>
+</kw>
+<kw name="Register Customer">
+<arg>${test_data.gender}</arg>
+<arg>${test_data.first_name}</arg>
+<arg>${test_data.last_name}</arg>
+<arg>${test_data.birthdate}</arg>
+<arg>${test_data.get_news}</arg>
+<arg>${test_data.email}</arg>
+<arg>${test_data.password}</arg>
+<kw name="Navigate To Register Page" library="navigate_keywords">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${common_mainScreen_register_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220303 11:16:53.912" level="INFO">Clicking element 'xpath://a[@class="ico-register"]'.</msg>
+<status status="PASS" starttime="20220303 11:16:53.911" endtime="20220303 11:16:54.401"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${REGISTER_URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20220303 11:16:54.404" level="INFO">Current location is 'https://demo.nopcommerce.com/register?returnUrl=%2F'.</msg>
+<status status="PASS" starttime="20220303 11:16:54.401" endtime="20220303 11:16:54.404"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>nopCommerce demo store. Register</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220303 11:16:54.406" level="INFO">Page title is 'nopCommerce demo store. Register'.</msg>
+<status status="PASS" starttime="20220303 11:16:54.404" endtime="20220303 11:16:54.406"/>
+</kw>
+<status status="PASS" starttime="20220303 11:16:53.911" endtime="20220303 11:16:54.406"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{list_of_required_fileds}</var>
+<arg>${gender}</arg>
+<arg>${first_name}</arg>
+<arg>${last_name}</arg>
+<arg>${birth_date}</arg>
+<arg>${news_letter}</arg>
+<arg>${input_email}</arg>
+<arg>${input_password}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220303 11:16:54.407" level="INFO">@{list_of_required_fileds} = [ Female | robot_framework | selenium | 12/30/2001 | Yes | yr_robot.framework.selenium@mailinator.com | test_python ]</msg>
+<status status="PASS" starttime="20220303 11:16:54.406" endtime="20220303 11:16:54.407"/>
+</kw>
+<for flavor="IN">
+<var>${field}</var>
+<value>@{list_of_required_fileds}</value>
+<iter>
+<var name="${field}">Female</var>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${field}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20220303 11:16:54.407" level="INFO">Length is 6</msg>
+<status status="PASS" starttime="20220303 11:16:54.407" endtime="20220303 11:16:54.407"/>
+</kw>
+<status status="PASS" starttime="20220303 11:16:54.407" endtime="20220303 11:16:54.407"/>
+</iter>
+<iter>
+<var name="${field}">robot_framework</var>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${field}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20220303 11:16:54.408" level="INFO">Length is 15</msg>
+<status status="PASS" starttime="20220303 11:16:54.408" endtime="20220303 11:16:54.408"/>
+</kw>
+<status status="PASS" starttime="20220303 11:16:54.408" endtime="20220303 11:16:54.408"/>
+</iter>
+<iter>
+<var name="${field}">selenium</var>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${field}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20220303 11:16:54.408" level="INFO">Length is 8</msg>
+<status status="PASS" starttime="20220303 11:16:54.408" endtime="20220303 11:16:54.408"/>
+</kw>
+<status status="PASS" starttime="20220303 11:16:54.408" endtime="20220303 11:16:54.409"/>
+</iter>
+<iter>
+<var name="${field}">12/30/2001</var>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${field}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20220303 11:16:54.409" level="INFO">Length is 10</msg>
+<status status="PASS" starttime="20220303 11:16:54.409" endtime="20220303 11:16:54.409"/>
+</kw>
+<status status="PASS" starttime="20220303 11:16:54.409" endtime="20220303 11:16:54.409"/>
+</iter>
+<iter>
+<var name="${field}">Yes</var>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${field}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20220303 11:16:54.409" level="INFO">Length is 3</msg>
+<status status="PASS" starttime="20220303 11:16:54.409" endtime="20220303 11:16:54.409"/>
+</kw>
+<status status="PASS" starttime="20220303 11:16:54.409" endtime="20220303 11:16:54.410"/>
+</iter>
+<iter>
+<var name="${field}">yr_robot.framework.selenium@mailinator.com</var>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${field}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20220303 11:16:54.410" level="INFO">Length is 42</msg>
+<status status="PASS" starttime="20220303 11:16:54.410" endtime="20220303 11:16:54.410"/>
+</kw>
+<status status="PASS" starttime="20220303 11:16:54.410" endtime="20220303 11:16:54.410"/>
+</iter>
+<iter>
+<var name="${field}">test_python</var>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${field}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20220303 11:16:54.410" level="INFO">Length is 11</msg>
+<status status="PASS" starttime="20220303 11:16:54.410" endtime="20220303 11:16:54.410"/>
+</kw>
+<status status="PASS" starttime="20220303 11:16:54.410" endtime="20220303 11:16:54.410"/>
+</iter>
+<status status="PASS" starttime="20220303 11:16:54.407" endtime="20220303 11:16:54.410"/>
+</for>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${common_mainScreen_register_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220303 11:16:54.411" level="INFO">Clicking element 'xpath://a[@class="ico-register"]'.</msg>
+<status status="PASS" starttime="20220303 11:16:54.411" endtime="20220303 11:16:54.801"/>
+</kw>
+<kw name="Convert To Lower Case" library="String">
+<var>${selected_gender}</var>
+<arg>${gender}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20220303 11:16:54.802" level="INFO">${selected_gender} = female</msg>
+<status status="PASS" starttime="20220303 11:16:54.801" endtime="20220303 11:16:54.802"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>"${selected_gender}" == "male"</arg>
+<arg>OR</arg>
+<arg>"${selected_gender}" == "female"</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220303 11:16:54.802" endtime="20220303 11:16:54.802"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${selector_gender}</var>
+<arg>//div[@id="gender"]//input[@id="gender-${selected_gender}"]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220303 11:16:54.803" level="INFO">${selector_gender} = //div[@id="gender"]//input[@id="gender-female"]</msg>
+<status status="PASS" starttime="20220303 11:16:54.802" endtime="20220303 11:16:54.803"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath:${selector_gender}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220303 11:16:54.803" level="INFO">Clicking element 'xpath://div[@id="gender"]//input[@id="gender-female"]'.</msg>
+<status status="PASS" starttime="20220303 11:16:54.803" endtime="20220303 11:16:54.842"/>
+</kw>
+<kw name="Set Textbox Value" library="textbox_keywords">
+<arg>${register_mainScreen_firstName_txtbox}</arg>
+<arg>${first_name}</arg>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220303 11:16:54.842" endtime="20220303 11:16:55.127"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 11:16:55.143" level="INFO">Element 'xpath://*[@class="page registration-page"]//form//*[@id="FirstName"]' is displayed.</msg>
+<status status="PASS" starttime="20220303 11:16:55.127" endtime="20220303 11:16:55.143"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220303 11:16:55.143" endtime="20220303 11:16:55.167"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<arg>${input_value}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 11:16:55.168" level="INFO">Typing text 'robot_framework' into text field 'xpath://*[@class="page registration-page"]//form//*[@id="FirstName"]'.</msg>
+<status status="PASS" starttime="20220303 11:16:55.167" endtime="20220303 11:16:55.245"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:16:56.257" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220303 11:16:55.245" endtime="20220303 11:16:56.257"/>
+</kw>
+<status status="PASS" starttime="20220303 11:16:54.842" endtime="20220303 11:16:56.257"/>
+</kw>
+<kw name="Set Textbox Value" library="textbox_keywords">
+<arg>${register_mainScreen_lastName_txtbox}</arg>
+<arg>${last_name}</arg>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220303 11:16:56.258" endtime="20220303 11:16:56.524"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 11:16:56.539" level="INFO">Element 'xpath://*[@class="page registration-page"]//form//*[@id="LastName"]' is displayed.</msg>
+<status status="PASS" starttime="20220303 11:16:56.524" endtime="20220303 11:16:56.539"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220303 11:16:56.539" endtime="20220303 11:16:56.559"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<arg>${input_value}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 11:16:56.560" level="INFO">Typing text 'selenium' into text field 'xpath://*[@class="page registration-page"]//form//*[@id="LastName"]'.</msg>
+<status status="PASS" starttime="20220303 11:16:56.560" endtime="20220303 11:16:56.624"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:16:57.625" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220303 11:16:56.624" endtime="20220303 11:16:57.625"/>
+</kw>
+<status status="PASS" starttime="20220303 11:16:56.257" endtime="20220303 11:16:57.625"/>
+</kw>
+<kw name="Select Birth of Date" library="dropdown_keywords">
+<arg>${register_mainScreen_birthdate_datepicker}</arg>
+<arg>${birth_date}</arg>
+<kw name="Split String Return By Index" library="CustomLibrary">
+<var>${get_mm}</var>
+<arg>${birth_date_value}</arg>
+<arg>/</arg>
+<arg>0</arg>
+<msg timestamp="20220303 11:16:57.626" level="INFO">${get_mm} = 12</msg>
+<status status="PASS" starttime="20220303 11:16:57.626" endtime="20220303 11:16:57.626"/>
+</kw>
+<kw name="Split String Return By Index" library="CustomLibrary">
+<var>${get_dd}</var>
+<arg>${birth_date_value}</arg>
+<arg>/</arg>
+<arg>1</arg>
+<msg timestamp="20220303 11:16:57.627" level="INFO">${get_dd} = 30</msg>
+<status status="PASS" starttime="20220303 11:16:57.626" endtime="20220303 11:16:57.627"/>
+</kw>
+<kw name="Split String Return By Index" library="CustomLibrary">
+<var>${get_yyyy}</var>
+<arg>${birth_date_value}</arg>
+<arg>/</arg>
+<arg>2</arg>
+<msg timestamp="20220303 11:16:57.627" level="INFO">${get_yyyy} = 2001</msg>
+<status status="PASS" starttime="20220303 11:16:57.627" endtime="20220303 11:16:57.627"/>
+</kw>
+<kw name="My Logger" library="CommonGlobal">
+<arg>${get_mm}-${get_dd}-${get_yyyy}</arg>
+<status status="PASS" starttime="20220303 11:16:57.627" endtime="20220303 11:16:57.628"/>
+</kw>
+<kw name="Select Dropdown By" library="dropdown_keywords">
+<arg>Index</arg>
+<arg>${parent_selector}//select[@name="DateOfBirthMonth"]</arg>
+<arg>${get_mm}</arg>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${dropdown_selector}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220303 11:16:57.628" endtime="20220303 11:16:57.906"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${dropdown_selector}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 11:16:57.917" level="INFO">Element 'xpath://*[@class="page registration-page"]//div[@class="date-picker-wrapper"]//select[@name="DateOfBirthMonth"]' is displayed.</msg>
+<status status="PASS" starttime="20220303 11:16:57.906" endtime="20220303 11:16:57.917"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>${dropdown_selector}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220303 11:16:57.918" endtime="20220303 11:16:57.935"/>
+</kw>
+<kw name="Convert To Lower Case" library="String">
+<var>${select_by}</var>
+<arg>${value_index_label}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20220303 11:16:57.936" level="INFO">${select_by} = index</msg>
+<status status="PASS" starttime="20220303 11:16:57.935" endtime="20220303 11:16:57.936"/>
+</kw>
+<if>
+<branch type="IF" condition="'${select_by}' == 'value'">
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>${dropdown_selector}</arg>
+<arg>${dropdown_item_value}</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<status status="NOT RUN" starttime="20220303 11:16:57.936" endtime="20220303 11:16:57.936"/>
+</kw>
+<status status="NOT RUN" starttime="20220303 11:16:57.936" endtime="20220303 11:16:57.936"/>
+</branch>
+<branch type="ELSE IF" condition="'${select_by}' == 'index'">
+<kw name="Select From List By Index" library="SeleniumLibrary">
+<arg>${dropdown_selector}</arg>
+<arg>${dropdown_item_value}</arg>
+<doc>Selects options from selection list ``locator`` by ``indexes``.</doc>
+<msg timestamp="20220303 11:16:57.936" level="INFO">Selecting options from selection list 'xpath://*[@class="page registration-page"]//div[@class="date-picker-wrapper"]//select[@name="DateOfBirthMonth"]' by index 12.</msg>
+<status status="PASS" starttime="20220303 11:16:57.936" endtime="20220303 11:16:58.061"/>
+</kw>
+<status status="PASS" starttime="20220303 11:16:57.936" endtime="20220303 11:16:58.061"/>
+</branch>
+<branch type="ELSE">
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<arg>${dropdown_selector}</arg>
+<arg>${dropdown_item_value}</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<status status="NOT RUN" starttime="20220303 11:16:58.061" endtime="20220303 11:16:58.061"/>
+</kw>
+<status status="NOT RUN" starttime="20220303 11:16:58.061" endtime="20220303 11:16:58.061"/>
+</branch>
+<status status="PASS" starttime="20220303 11:16:57.936" endtime="20220303 11:16:58.061"/>
+</if>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:16:59.073" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220303 11:16:58.061" endtime="20220303 11:16:59.073"/>
+</kw>
+<status status="PASS" starttime="20220303 11:16:57.628" endtime="20220303 11:16:59.073"/>
+</kw>
+<kw name="Select Dropdown Value" library="dropdown_keywords">
+<arg>${parent_selector}//select[@name="DateOfBirthDay"]</arg>
+<arg>${get_dd}</arg>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${dropdown_selector}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220303 11:16:59.074" endtime="20220303 11:16:59.354"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${dropdown_selector}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 11:16:59.366" level="INFO">Element 'xpath://*[@class="page registration-page"]//div[@class="date-picker-wrapper"]//select[@name="DateOfBirthDay"]' is displayed.</msg>
+<status status="PASS" starttime="20220303 11:16:59.355" endtime="20220303 11:16:59.366"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>${dropdown_selector}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220303 11:16:59.366" endtime="20220303 11:16:59.382"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>${dropdown_selector}</arg>
+<arg>${dropdown_item_value}</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220303 11:16:59.383" level="INFO">Selecting options from selection list 'xpath://*[@class="page registration-page"]//div[@class="date-picker-wrapper"]//select[@name="DateOfBirthDay"]' by value 30.</msg>
+<status status="PASS" starttime="20220303 11:16:59.382" endtime="20220303 11:16:59.421"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:17:00.424" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220303 11:16:59.422" endtime="20220303 11:17:00.424"/>
+</kw>
+<status status="PASS" starttime="20220303 11:16:59.073" endtime="20220303 11:17:00.424"/>
+</kw>
+<kw name="Select Dropdown Value" library="dropdown_keywords">
+<arg>${parent_selector}//select[@name="DateOfBirthYear"]</arg>
+<arg>${get_yyyy}</arg>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${dropdown_selector}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220303 11:17:00.425" endtime="20220303 11:17:00.691"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${dropdown_selector}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 11:17:00.702" level="INFO">Element 'xpath://*[@class="page registration-page"]//div[@class="date-picker-wrapper"]//select[@name="DateOfBirthYear"]' is displayed.</msg>
+<status status="PASS" starttime="20220303 11:17:00.691" endtime="20220303 11:17:00.702"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>${dropdown_selector}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220303 11:17:00.702" endtime="20220303 11:17:00.719"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>${dropdown_selector}</arg>
+<arg>${dropdown_item_value}</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220303 11:17:00.719" level="INFO">Selecting options from selection list 'xpath://*[@class="page registration-page"]//div[@class="date-picker-wrapper"]//select[@name="DateOfBirthYear"]' by value 2001.</msg>
+<status status="PASS" starttime="20220303 11:17:00.719" endtime="20220303 11:17:00.765"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:17:01.770" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220303 11:17:00.765" endtime="20220303 11:17:01.770"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:00.424" endtime="20220303 11:17:01.770"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:17:02.774" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220303 11:17:01.770" endtime="20220303 11:17:02.774"/>
+</kw>
+<status status="PASS" starttime="20220303 11:16:57.625" endtime="20220303 11:17:02.774"/>
+</kw>
+<kw name="Set Textbox Value" library="textbox_keywords">
+<arg>${register_mainScreen_email_txtbox}</arg>
+<arg>${input_email}</arg>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220303 11:17:02.775" endtime="20220303 11:17:03.041"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 11:17:03.052" level="INFO">Element 'xpath://*[@class="page registration-page"]//form//*[@id="Email"]' is displayed.</msg>
+<status status="PASS" starttime="20220303 11:17:03.041" endtime="20220303 11:17:03.052"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220303 11:17:03.052" endtime="20220303 11:17:03.068"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<arg>${input_value}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 11:17:03.068" level="INFO">Typing text 'yr_robot.framework.selenium@mailinator.com' into text field 'xpath://*[@class="page registration-page"]//form//*[@id="Email"]'.</msg>
+<status status="PASS" starttime="20220303 11:17:03.068" endtime="20220303 11:17:03.132"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:17:04.134" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220303 11:17:03.132" endtime="20220303 11:17:04.134"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:02.774" endtime="20220303 11:17:04.134"/>
+</kw>
+<kw name="Set Textbox Value" library="textbox_keywords">
+<arg>${register_mainScreen_pasword_txtbox}</arg>
+<arg>${input_password}</arg>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220303 11:17:04.135" endtime="20220303 11:17:04.429"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 11:17:04.440" level="INFO">Element 'xpath://*[@class="page registration-page"]//form//*[@id="Password"]' is displayed.</msg>
+<status status="PASS" starttime="20220303 11:17:04.429" endtime="20220303 11:17:04.440"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220303 11:17:04.440" endtime="20220303 11:17:04.457"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<arg>${input_value}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 11:17:04.457" level="INFO">Typing text 'test_python' into text field 'xpath://*[@class="page registration-page"]//form//*[@id="Password"]'.</msg>
+<status status="PASS" starttime="20220303 11:17:04.457" endtime="20220303 11:17:04.513"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:17:05.521" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220303 11:17:04.514" endtime="20220303 11:17:05.521"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:04.134" endtime="20220303 11:17:05.521"/>
+</kw>
+<kw name="Set Textbox Value" library="textbox_keywords">
+<arg>${register_mainScreen_confirmPasword_txtbox}</arg>
+<arg>${input_password}</arg>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220303 11:17:05.522" endtime="20220303 11:17:05.801"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 11:17:05.813" level="INFO">Element 'xpath://*[@class="page registration-page"]//form//*[@id="ConfirmPassword"]' is displayed.</msg>
+<status status="PASS" starttime="20220303 11:17:05.801" endtime="20220303 11:17:05.813"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220303 11:17:05.814" endtime="20220303 11:17:05.830"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<arg>${input_value}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 11:17:05.830" level="INFO">Typing text 'test_python' into text field 'xpath://*[@class="page registration-page"]//form//*[@id="ConfirmPassword"]'.</msg>
+<status status="PASS" starttime="20220303 11:17:05.830" endtime="20220303 11:17:05.882"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:17:06.888" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220303 11:17:05.882" endtime="20220303 11:17:06.888"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:05.521" endtime="20220303 11:17:06.888"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${register_mainScreen_register_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220303 11:17:06.888" level="INFO">Clicking element 'xpath://*[@class="page registration-page"]//form//*[@id="register-button"]'.</msg>
+<status status="PASS" starttime="20220303 11:17:06.888" endtime="20220303 11:17:07.673"/>
+</kw>
+<kw name="Set Selenium Timeout" library="SeleniumLibrary">
+<arg>5s</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" starttime="20220303 11:17:07.673" endtime="20220303 11:17:07.674"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${REGISTER_SUCCESS_URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20220303 11:17:07.678" level="INFO">Current location is 'https://demo.nopcommerce.com/registerresult/1?returnUrl=/'.</msg>
+<status status="PASS" starttime="20220303 11:17:07.674" endtime="20220303 11:17:07.678"/>
+</kw>
+<kw name="Generate Screenshot Filename" library="CustomLibrary">
+<var>${screenshot_filename}</var>
+<msg timestamp="20220303 11:17:07.678" level="INFO">${screenshot_filename} = 03_03_2022_111707</msg>
+<status status="PASS" starttime="20220303 11:17:07.678" endtime="20220303 11:17:07.678"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>Results/${screenshot_filename}-{index}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220303 11:17:07.813" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Results/03_03_2022_111707-1.png"&gt;&lt;img src="Results/03_03_2022_111707-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220303 11:17:07.678" endtime="20220303 11:17:07.813"/>
+</kw>
+<status status="PASS" starttime="20220303 11:16:53.907" endtime="20220303 11:17:07.813"/>
+</kw>
+<kw name="LogOut User" library="CommonGlobal">
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:17:09.819" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20220303 11:17:07.814" endtime="20220303 11:17:09.819"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${common_mainscreen_logout_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220303 11:17:09.820" level="INFO">Clicking element 'xpath://a[@class="ico-logout"]'.</msg>
+<status status="PASS" starttime="20220303 11:17:09.819" endtime="20220303 11:17:10.515"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${WELCOME_URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20220303 11:17:10.518" level="INFO">Current location is 'https://demo.nopcommerce.com/'.</msg>
+<status status="PASS" starttime="20220303 11:17:10.516" endtime="20220303 11:17:10.518"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>nopCommerce demo store</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220303 11:17:10.520" level="INFO">Page title is 'nopCommerce demo store'.</msg>
+<status status="PASS" starttime="20220303 11:17:10.518" endtime="20220303 11:17:10.521"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:07.813" endtime="20220303 11:17:10.521"/>
+</kw>
+<kw name="Login User">
+<arg>${GET_GENERATED_RANDOM_EMAIL}</arg>
+<arg>${test_data.password}</arg>
+<kw name="Navigate To Login Page" library="navigate_keywords">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${common_mainScreen_login_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220303 11:17:10.523" level="INFO">Clicking element 'xpath://a[@class="ico-login"]'.</msg>
+<status status="PASS" starttime="20220303 11:17:10.522" endtime="20220303 11:17:10.981"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${LOGIN_URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20220303 11:17:10.983" level="INFO">Current location is 'https://demo.nopcommerce.com/login?returnUrl=%2F'.</msg>
+<status status="PASS" starttime="20220303 11:17:10.981" endtime="20220303 11:17:10.984"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>nopCommerce demo store. Login</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220303 11:17:10.986" level="INFO">Page title is 'nopCommerce demo store. Login'.</msg>
+<status status="PASS" starttime="20220303 11:17:10.984" endtime="20220303 11:17:10.986"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:10.522" endtime="20220303 11:17:10.986"/>
+</kw>
+<kw name="Login with Credentials" library="CommonGlobal">
+<arg>${email}</arg>
+<arg>${password}</arg>
+<kw name="Set Textbox Value" library="textbox_keywords">
+<arg>${login_mainScreen_email_txtbox}</arg>
+<arg>${input_email}</arg>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220303 11:17:10.987" endtime="20220303 11:17:11.266"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 11:17:11.280" level="INFO">Element 'xpath://form//*[@id="Email"]' is displayed.</msg>
+<status status="PASS" starttime="20220303 11:17:11.266" endtime="20220303 11:17:11.280"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220303 11:17:11.280" endtime="20220303 11:17:11.299"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<arg>${input_value}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 11:17:11.300" level="INFO">Typing text 'yr_robot.framework.selenium@mailinator.com' into text field 'xpath://form//*[@id="Email"]'.</msg>
+<status status="PASS" starttime="20220303 11:17:11.300" endtime="20220303 11:17:11.369"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:17:12.369" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220303 11:17:11.369" endtime="20220303 11:17:12.369"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:10.986" endtime="20220303 11:17:12.369"/>
+</kw>
+<kw name="Set Textbox Value" library="textbox_keywords">
+<arg>${login_mainScreen_password_txtbox}</arg>
+<arg>${input_password}</arg>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220303 11:17:12.370" endtime="20220303 11:17:12.636"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 11:17:12.647" level="INFO">Element 'xpath://form//*[@id="Password"]' is displayed.</msg>
+<status status="PASS" starttime="20220303 11:17:12.636" endtime="20220303 11:17:12.647"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220303 11:17:12.648" endtime="20220303 11:17:12.662"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<arg>${input_value}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 11:17:12.663" level="INFO">Typing text 'test_python' into text field 'xpath://form//*[@id="Password"]'.</msg>
+<status status="PASS" starttime="20220303 11:17:12.662" endtime="20220303 11:17:12.715"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:17:13.718" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220303 11:17:12.715" endtime="20220303 11:17:13.718"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:12.369" endtime="20220303 11:17:13.718"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>xpath://form//button[contains(@class,"login-button")]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220303 11:17:13.718" level="INFO">Clicking button 'xpath://form//button[contains(@class,"login-button")]'.</msg>
+<status status="PASS" starttime="20220303 11:17:13.718" endtime="20220303 11:17:14.433"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>nopCommerce demo store</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220303 11:17:14.437" level="INFO">Page title is 'nopCommerce demo store'.</msg>
+<status status="PASS" starttime="20220303 11:17:14.434" endtime="20220303 11:17:14.437"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:17:16.441" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20220303 11:17:14.437" endtime="20220303 11:17:16.441"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:10.986" endtime="20220303 11:17:16.441"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:10.521" endtime="20220303 11:17:16.441"/>
+</kw>
+<kw name="Open new Browser Tab and Close" library="window_keywords">
+<arg>${NEW_BROWSER_TAB}</arg>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>window.open('${url}');</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220303 11:17:16.442" level="INFO">Executing JavaScript:
+window.open('https://www.w3schools.com/');
+Without any arguments.</msg>
+<status status="PASS" starttime="20220303 11:17:16.442" endtime="20220303 11:17:16.471"/>
+</kw>
+<kw name="Get Window Handles" library="SeleniumLibrary">
+<var>${handles}</var>
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<msg timestamp="20220303 11:17:16.474" level="INFO">${handles} = ['CDwindow-EB5A5BBC4A170E247188BB8CBDB12E55', 'CDwindow-3B2B83908A3CAC0A8C1C99FE6EB745AA']</msg>
+<status status="PASS" starttime="20220303 11:17:16.471" endtime="20220303 11:17:16.474"/>
+</kw>
+<kw name="My Logger" library="CommonGlobal">
+<arg>${handles}</arg>
+<status status="PASS" starttime="20220303 11:17:16.474" endtime="20220303 11:17:16.475"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>${handles}[1]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20220303 11:17:16.475" endtime="20220303 11:17:16.509"/>
+</kw>
+<kw name="Wait Until Location Contains" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>timeout=10</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" starttime="20220303 11:17:16.509" endtime="20220303 11:17:17.747"/>
+</kw>
+<kw name="Set Browser Implicit Wait" library="SeleniumLibrary">
+<arg>3s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20220303 11:17:17.748" endtime="20220303 11:17:17.748"/>
+</kw>
+<kw name="Close Window" library="SeleniumLibrary">
+<doc>Closes currently opened and selected browser window/tab.</doc>
+<status status="PASS" starttime="20220303 11:17:17.749" endtime="20220303 11:17:17.807"/>
+</kw>
+<kw name="Set Browser Implicit Wait" library="SeleniumLibrary">
+<arg>3s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20220303 11:17:17.807" endtime="20220303 11:17:17.808"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>${handles}[0]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20220303 11:17:17.808" endtime="20220303 11:17:17.813"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:17:22.813" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220303 11:17:17.813" endtime="20220303 11:17:22.813"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:16.441" endtime="20220303 11:17:22.813"/>
+</kw>
+<kw name="My Logger" library="CommonGlobal">
+<arg>${GET_GENERATED_RANDOM_EMAIL}</arg>
+<status status="PASS" starttime="20220303 11:17:22.814" endtime="20220303 11:17:22.814"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220303 11:17:22.814" endtime="20220303 11:17:24.914"/>
+</kw>
+<doc>Create New Customer with validation of elements</doc>
+<tag>Regression</tag>
+<status status="PASS" starttime="20220303 11:16:49.006" endtime="20220303 11:17:24.914"/>
+</test>
+<test id="s1-t2" name="Add Items in Shopping Cart">
+<kw name="Proceed To Browser" library="CommonGlobal">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${app_url}</arg>
+<arg>${app_browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220303 11:17:24.916" level="INFO">Opening browser 'chrome' to base url 'https://demo.nopcommerce.com/'.</msg>
+<status status="PASS" starttime="20220303 11:17:24.916" endtime="20220303 11:17:27.526"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220303 11:17:27.527" endtime="20220303 11:17:27.651"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${app_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20220303 11:17:27.654" level="INFO">Current location is 'https://demo.nopcommerce.com/'.</msg>
+<status status="PASS" starttime="20220303 11:17:27.651" endtime="20220303 11:17:27.654"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:17:29.666" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20220303 11:17:27.654" endtime="20220303 11:17:29.666"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:24.916" endtime="20220303 11:17:29.666"/>
+</kw>
+<kw name="Login User">
+<arg>${test_data.email}</arg>
+<arg>${test_data.password}</arg>
+<kw name="Navigate To Login Page" library="navigate_keywords">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${common_mainScreen_login_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220303 11:17:29.669" level="INFO">Clicking element 'xpath://a[@class="ico-login"]'.</msg>
+<status status="PASS" starttime="20220303 11:17:29.669" endtime="20220303 11:17:30.113"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${LOGIN_URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20220303 11:17:30.116" level="INFO">Current location is 'https://demo.nopcommerce.com/login?returnUrl=%2F'.</msg>
+<status status="PASS" starttime="20220303 11:17:30.113" endtime="20220303 11:17:30.116"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>nopCommerce demo store. Login</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220303 11:17:30.120" level="INFO">Page title is 'nopCommerce demo store. Login'.</msg>
+<status status="PASS" starttime="20220303 11:17:30.116" endtime="20220303 11:17:30.120"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:29.668" endtime="20220303 11:17:30.120"/>
+</kw>
+<kw name="Login with Credentials" library="CommonGlobal">
+<arg>${email}</arg>
+<arg>${password}</arg>
+<kw name="Set Textbox Value" library="textbox_keywords">
+<arg>${login_mainScreen_email_txtbox}</arg>
+<arg>${input_email}</arg>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220303 11:17:30.121" endtime="20220303 11:17:30.392"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 11:17:30.406" level="INFO">Element 'xpath://form//*[@id="Email"]' is displayed.</msg>
+<status status="PASS" starttime="20220303 11:17:30.392" endtime="20220303 11:17:30.406"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220303 11:17:30.407" endtime="20220303 11:17:30.426"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<arg>${input_value}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 11:17:30.426" level="INFO">Typing text 'yr_robot.framework.selenium@mailinator.com' into text field 'xpath://form//*[@id="Email"]'.</msg>
+<status status="PASS" starttime="20220303 11:17:30.426" endtime="20220303 11:17:30.492"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:17:31.496" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220303 11:17:30.492" endtime="20220303 11:17:31.496"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:30.121" endtime="20220303 11:17:31.496"/>
+</kw>
+<kw name="Set Textbox Value" library="textbox_keywords">
+<arg>${login_mainScreen_password_txtbox}</arg>
+<arg>${input_password}</arg>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220303 11:17:31.497" endtime="20220303 11:17:31.776"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 11:17:31.790" level="INFO">Element 'xpath://form//*[@id="Password"]' is displayed.</msg>
+<status status="PASS" starttime="20220303 11:17:31.776" endtime="20220303 11:17:31.790"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220303 11:17:31.790" endtime="20220303 11:17:31.808"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_selector}</arg>
+<arg>${input_value}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 11:17:31.809" level="INFO">Typing text 'test_python' into text field 'xpath://form//*[@id="Password"]'.</msg>
+<status status="PASS" starttime="20220303 11:17:31.809" endtime="20220303 11:17:31.860"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:17:32.866" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220303 11:17:31.860" endtime="20220303 11:17:32.866"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:31.496" endtime="20220303 11:17:32.866"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>xpath://form//button[contains(@class,"login-button")]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220303 11:17:32.867" level="INFO">Clicking button 'xpath://form//button[contains(@class,"login-button")]'.</msg>
+<status status="PASS" starttime="20220303 11:17:32.866" endtime="20220303 11:17:33.522"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>nopCommerce demo store</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220303 11:17:33.525" level="INFO">Page title is 'nopCommerce demo store'.</msg>
+<status status="PASS" starttime="20220303 11:17:33.523" endtime="20220303 11:17:33.525"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:17:35.531" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20220303 11:17:33.525" endtime="20220303 11:17:35.531"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:30.120" endtime="20220303 11:17:35.531"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:29.666" endtime="20220303 11:17:35.531"/>
+</kw>
+<kw name="Select Tab With Value" library="tab_keywords">
+<arg>${category_parent_selector}</arg>
+<arg>Gift Cards</arg>
+<kw name="Catenate" library="BuiltIn">
+<var>${selected_tab}</var>
+<arg>SEPARATOR=</arg>
+<arg>${tab_parent_selector}</arg>
+<arg>//a[contains(text(),"</arg>
+<arg>${tab_value}</arg>
+<arg>")]</arg>
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<msg timestamp="20220303 11:17:35.533" level="INFO">${selected_tab} = xpath://ul[@class="top-menu notmobile"]//a[contains(text(),"Gift Cards")]</msg>
+<status status="PASS" starttime="20220303 11:17:35.532" endtime="20220303 11:17:35.533"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${selected_tab}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220303 11:17:35.533" endtime="20220303 11:17:35.798"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${selected_tab}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 11:17:35.812" level="INFO">Element 'xpath://ul[@class="top-menu notmobile"]//a[contains(text(),"Gift Cards")]' is displayed.</msg>
+<status status="PASS" starttime="20220303 11:17:35.798" endtime="20220303 11:17:35.812"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>${selected_tab}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220303 11:17:35.813" endtime="20220303 11:17:35.832"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${selected_tab}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220303 11:17:35.832" level="INFO">Clicking element 'xpath://ul[@class="top-menu notmobile"]//a[contains(text(),"Gift Cards")]'.</msg>
+<status status="PASS" starttime="20220303 11:17:35.832" endtime="20220303 11:17:37.420"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:17:38.426" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220303 11:17:37.420" endtime="20220303 11:17:38.426"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:35.532" endtime="20220303 11:17:38.426"/>
+</kw>
+<kw name="Select Tab" library="tab_keywords">
+<arg>${common_mainscreen_books_tab}</arg>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${tab_selector}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220303 11:17:38.427" endtime="20220303 11:17:38.706"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${tab_selector}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 11:17:38.718" level="INFO">Element 'xpath://ul[@class="top-menu notmobile"]//li//a[@href="/books"]' is displayed.</msg>
+<status status="PASS" starttime="20220303 11:17:38.707" endtime="20220303 11:17:38.718"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>${tab_selector}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220303 11:17:38.718" endtime="20220303 11:17:38.733"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${tab_selector}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220303 11:17:38.734" level="INFO">Clicking element 'xpath://ul[@class="top-menu notmobile"]//li//a[@href="/books"]'.</msg>
+<status status="PASS" starttime="20220303 11:17:38.734" endtime="20220303 11:17:40.403"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 11:17:41.407" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220303 11:17:40.403" endtime="20220303 11:17:41.407"/>
+</kw>
+<status status="PASS" starttime="20220303 11:17:38.426" endtime="20220303 11:17:41.407"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220303 11:17:41.407" endtime="20220303 11:17:43.482"/>
+</kw>
+<tag>Regression</tag>
+<status status="PASS" starttime="20220303 11:17:24.915" endtime="20220303 11:17:43.482"/>
+</test>
+<doc>Register and Login new Customer</doc>
+<status status="PASS" starttime="20220303 11:16:47.892" endtime="20220303 11:17:43.483"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="2" fail="0" skip="0">Regression</stat>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="LoginandRegister">LoginandRegister</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
